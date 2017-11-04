@@ -1,0 +1,19 @@
+hash: e4206427334e637bd16be5e61ce3b95aad2548e61016e4b30c44aeb4cca1e45a
+updated: 2017-11-04T15:28:31.035105187-04:00
+imports:
+- name: github.com/unidoc/unidoc
+  version: 73394ee038a758005ef60dd0acc15a14d72f59ca
+  subpackages:
+  - common
+  - common/license
+  - pdf/core
+  - pdf/model
+  - pdf/model/fonts
+  - pdf/model/sampling
+  - pdf/model/textencoding
+  - pdf/ps
+- name: golang.org/x/image
+  version: f7e31b4ea2e3413ab91b4e7d2dc83e5f8d19a44c
+  subpackages:
+  - tiff/lzw
+testImports: []

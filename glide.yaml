@@ -1,0 +1,5 @@
+package: github.com/leonj1/pdf-unlock
+import:
+- package: github.com/unidoc/unidoc
+  subpackages:
+  - pdf/model
