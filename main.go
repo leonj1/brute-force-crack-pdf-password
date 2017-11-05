@@ -57,14 +57,12 @@ func main() {
     s.Succeed()
 
     s.Start("Trying to crack PDF")
-	//s.SetMessage(fmt.Sprintf("Trying to crack PDF"))
     total := len(lines)
 	for i := 1; i < total; i++ {
         pos := float64(i)/float64(total)*100
 		err := unlockPdf(inputPath, outputPath, lines[i])
 		if err != nil {
-			//fmt.Printf("Password did not work: %s\n", lines[i])
-            s.SetMessage(fmt.Sprintf("Working: %.2f %", pos))
+            s.SetMessage(fmt.Sprintf("Working: %.2f %%", pos))
 		} else {
 			fmt.Printf("Complete. Password: %s see output file: %s\n", lines[i], outputPath)
             s.Succeed()
