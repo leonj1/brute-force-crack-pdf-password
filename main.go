@@ -62,7 +62,7 @@ func main() {
         pos := float64(i)/float64(total)*100
 		err := unlockPdf(inputPath, outputPath, lines[i])
 		if err != nil {
-            s.SetMessage(fmt.Sprintf("Working: %.2f %%", pos))
+            s.SetMessage(fmt.Sprintf("Working: %.3f %%", pos))
 		} else {
 			fmt.Printf("Complete. Password: %s see output file: %s\n", lines[i], outputPath)
             s.Succeed()
