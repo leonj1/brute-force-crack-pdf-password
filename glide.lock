@@ -1,6 +1,16 @@
 hash: e4206427334e637bd16be5e61ce3b95aad2548e61016e4b30c44aeb4cca1e45a
-updated: 2017-11-04T15:28:31.035105187-04:00
+updated: 2017-11-05T18:05:28.944485267-05:00
 imports:
+- name: github.com/fatih/color
+  version: 5df930a27be2502f99b292b7cc09ebad4d0891f4
+- name: github.com/mattn/go-colorable
+  version: 5411d3eea5978e6cdc258b30de592b60df6aba96
+  repo: https://github.com/mattn/go-colorable
+- name: github.com/mattn/go-isatty
+  version: 57fdcb988a5c543893cc61bce354a6e24ab70022
+  repo: https://github.com/mattn/go-isatty
+- name: github.com/slok/gospinner
+  version: 9ad9fd160041ce6bfb531a55930573fe4c24042d
 - name: github.com/unidoc/unidoc
   version: 73394ee038a758005ef60dd0acc15a14d72f59ca
   subpackages:
@@ -16,4 +26,9 @@ imports:
   version: f7e31b4ea2e3413ab91b4e7d2dc83e5f8d19a44c
   subpackages:
   - tiff/lzw
+- name: golang.org/x/sys
+  version: e24f485414aeafb646f6fca458b0bf869c0880a1
+  repo: https://go.googlesource.com/sys
+  subpackages:
+  - unix
 testImports: []
