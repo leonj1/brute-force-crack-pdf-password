@@ -59,11 +59,12 @@ func main() {
 	s.Start("Trying to crack PDF")
 	scanner := bufio.NewScanner(file)
 	for scanner.Scan() {
-		s.SetMessage(fmt.Sprintf("Working: %s", scanner.Text()))
-		err := unlockPdf(inputPath, outputPath, scanner.Text())
+		line := scanner.Text()
+		s.SetMessage(fmt.Sprintf("Working: %s", line))
+		err := unlockPdf(inputPath, outputPath, line)
 		if err != nil {
 		} else {
-			fmt.Printf("Complete. Password: %s see output file: %s\n", scanner.Text(), outputPath)
+			fmt.Printf("Complete. Password: %s see output file: %s\n", line, outputPath)
 			s.Succeed()
 			os.Exit(0)
 		}
