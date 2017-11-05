@@ -14,6 +14,7 @@ import (
 	pdf "github.com/unidoc/unidoc/pdf/model"
 	"bufio"
     "github.com/slok/gospinner"
+	"log"
 )
 
 func readLines(path string) ([]string, error) {
@@ -47,30 +48,27 @@ func main() {
 		os.Exit(1)
 	}
 
-    s.Start("Reading password file")
-    //s.SetMessage(fmt.Sprintf("Reading password file"))
-	lines, err := readLines(passwordFile)
+	s.Start("Opening password file")
+	file, err := os.Open(passwordFile)
 	if err != nil {
-		fmt.Printf("Error: %v\n", err)
-		os.Exit(1)
+		log.Fatal(err)
 	}
-    s.Succeed()
+	defer file.Close()
+	s.Succeed()
 
-    s.Start("Trying to crack PDF")
-    total := len(lines)
-	for i := 1; i < total; i++ {
-        pos := float64(i)/float64(total)*100
-		err := unlockPdf(inputPath, outputPath, lines[i])
+	s.Start("Trying to crack PDF")
+	scanner := bufio.NewScanner(file)
+	for scanner.Scan() {
+		s.SetMessage(fmt.Sprintf("Working: %s", scanner.Text()))
+		err := unlockPdf(inputPath, outputPath, scanner.Text())
 		if err != nil {
-            s.SetMessage(fmt.Sprintf("Working: %.3f %%", pos))
 		} else {
-			fmt.Printf("Complete. Password: %s see output file: %s\n", lines[i], outputPath)
-            s.Succeed()
+			fmt.Printf("Complete. Password: %s see output file: %s\n", scanner.Text(), outputPath)
+			s.Succeed()
 			os.Exit(0)
 		}
 	}
     s.Succeed()
-
 }
 
 func unlockPdf(inputPath string, outputPath string, password string) error {
